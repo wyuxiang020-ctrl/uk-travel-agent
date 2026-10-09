@@ -1,0 +1,159 @@
+.itinerary-map {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dcdcd6;
+  background: #f7f6f2;
+  color: #20211f;
+  font-family: var(--font-body, sans-serif);
+  isolation: isolate;
+}
+
+.itinerary-map__surface {
+  position: relative;
+}
+
+.itinerary-map__canvas {
+  width: 100%;
+  height: 470px;
+  min-height: 280px;
+  z-index: 0;
+  background: #f0f0e9;
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Keep map geography as quiet context; only the original OSM tiles are styled. */
+.itinerary-map .leaflet-tile-pane {
+  filter: grayscale(.95) saturate(.1) contrast(.68) brightness(1.13);
+  opacity: .72;
+}
+
+.itinerary-map__placeholder,
+.itinerary-map__empty {
+  position: absolute;
+  inset: 45% 20px auto;
+  z-index: 1;
+  padding: 15px;
+  background: #f7f6f2f2;
+  color: #646660;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.itinerary-map__empty {
+  pointer-events: none;
+}
+
+.itinerary-map__attribution {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  max-width: 100%;
+  padding: 3px 6px;
+  background: #f7f6f2f2;
+  color: #565852;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.itinerary-map__attribution a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.itinerary-map .itinerary-map__marker {
+  display: grid;
+  place-items: center;
+  border: 1px solid #f7f6f2;
+  border-radius: 50%;
+  background: #20211f;
+  color: #fff;
+  box-shadow: 0 1px 4px #20211f25;
+  font-family: var(--font-body, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.itinerary-map .itinerary-map__marker:hover {
+  background: #444640;
+}
+
+.itinerary-map .itinerary-map__marker--selected {
+  border: 3px solid #f7f6f2;
+  background: #20211f;
+  outline: 2px solid #20211f;
+  box-shadow: none;
+}
+
+.itinerary-map .itinerary-map__marker:focus-visible {
+  outline: 3px solid #20211f;
+  outline-offset: 4px;
+}
+
+.itinerary-map .leaflet-control-zoom {
+  overflow: hidden;
+  border: 1px solid #d1d2cb;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.itinerary-map .leaflet-control-zoom a {
+  width: 30px;
+  height: 30px;
+  border-bottom-color: #d1d2cb;
+  background: #f7f6f2;
+  color: #20211f;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.itinerary-map__note {
+  margin: 0;
+  padding: 10px 12px;
+  color: #6a6c65;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.itinerary-map__notice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #dcdcd6;
+  color: #646660;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.itinerary-map__notice p {
+  margin: 0;
+  flex: 1 1 180px;
+}
+
+.itinerary-map__notice button {
+  flex-shrink: 0;
+  padding: 5px 0;
+  background: transparent;
+  color: #20211f;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .itinerary-map__canvas {
+    height: 390px;
+  }
+
+  .itinerary-map__notice button {
+    min-height: 36px;
+  }
+}

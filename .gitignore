@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+work/
+*.log
+
+# Local collaboration history and machine-specific review records.
+AGENTS.md
+docs/progress.md
+docs/roadmap.md
+docs/project-plan.md
+docs/github-publish-checklist.md
+outputs/*
+!outputs/portfolio/
