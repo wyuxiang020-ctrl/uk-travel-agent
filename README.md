@@ -14,7 +14,7 @@
 
 ## 成果与文档
 
-- [产品作品案例](outputs/portfolio/index.html)
+- [在线产品作品案例](https://yuxiangworks.com/projects/slowtrail/) · [离线作品网页](outputs/portfolio/index.html)
 - [简历项目描述](outputs/portfolio/resume-copy.md)
 - [产品需求文档 PRD](outputs/portfolio/prd.md)
 - [案例正文](outputs/portfolio/case-study.md)
@@ -61,7 +61,7 @@ npm test
 npm run build
 ```
 
-当前 24 项测试覆盖示例结构、输入边界、资料关系、故事来源与时间冲突等场景。已完成构建与接口检查，最新页面的完整浏览器和手机交互验收仍待完成。
+当前 24 项测试覆盖示例结构、输入边界、资料关系、故事来源与时间冲突等场景。已完成构建与接口检查。本次实际浏览了首页、需求确认、示例行程、发现故事、手机地图和资料查询，并对测试样例执行时间检查。截图见作品案例；完整故障、键盘、全部路径及真机验收仍待完成。
 
 ## 代码结构
 
