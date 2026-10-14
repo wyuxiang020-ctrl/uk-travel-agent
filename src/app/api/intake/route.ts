@@ -1,0 +1,9 @@
+import {readAgentBody,acquireRun} from "@/lib/agent/http";
+import {createModelClient,getModelConfig} from "@/lib/agent/model";
+import {AgentError,record,text} from "@/lib/agent/validation";
+import {parseIntakeRequest,runIntake} from "@/lib/agent/intake-runner";
+export const runtime="nodejs";
+export const dynamic="force-dynamic";
+function config(){if(process.env.TRAVEL_INTAKE_ENABLED!=="true")throw new AgentError("INTAKE_PAUSED","需求助手已接入，模型调用尚未恢复。可以先填写基础信息并手动调整下方计划。");const c=getModelConfig();if(!c.testBudget||c.testBudget.id!=="20261011-gpt41-first")throw new AgentError("BUDGET_REQUIRED","需保留原累计测试预算，当前未发起模型调用。");return {...c,maxTokens:Math.min(c.maxTokens,2000)};}
+export function GET(){try{config();return Response.json({enabled:true,message:"发送想法后由模型理解，确认后再更新路线。"},{headers:{"Cache-Control":"no-store"}});}catch(e){return Response.json({enabled:false,message:e instanceof AgentError?e.message:"模型暂不可用。"},{headers:{"Cache-Control":"no-store"}});}}
+export async function POST(request:Request){let release:(()=>void)|undefined;try{const raw=await readAgentBody(request);if(!record(raw)||!text(raw.requestId,80)||!/^[\w-]{8,80}$/.test(raw.requestId))throw new AgentError("INVALID_INPUT","请求编号无效。");const input=parseIntakeRequest(raw.input);const c=config();request.signal.throwIfAborted();release=acquireRun(raw.requestId);const result=await runIntake(input,createModelClient(c),request.signal);return Response.json({ok:true,result},{headers:{"Cache-Control":"no-store"}});}catch(e){const error=e instanceof AgentError?e:new AgentError("INTAKE_FAILED","本次需求理解未完成，原计划保留。");return Response.json({ok:false,error:{code:error.code,message:error.message}},{status:error.code==="INTAKE_PAUSED"?503:error.code==="ORIGIN_REJECTED"?403:["AGENT_BUSY","DUPLICATE_REQUEST"].includes(error.code)?409:400,headers:{"Cache-Control":"no-store"}});}finally{release?.();}}

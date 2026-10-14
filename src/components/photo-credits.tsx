@@ -4,6 +4,13 @@ export default function PhotoCredits() {
   return (
     <div className="credit-links">
       <p>
+        斯洛文尼亚 · 布莱德湖 · Kyvuh
+        <br />
+        <a href="https://commons.wikimedia.org/wiki/File:Lake_Bled_from_Bled_Castle.jpg" target="_blank" rel="noreferrer">原始照片 <ArrowUpRight size={13} /></a>
+        {" · "}<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noreferrer">CC0 1.0</a>
+        <small>欧洲旅行灵感；此目的地尚未开放规划。</small>
+      </p>
+      <p>
         伦敦 · Edgar El
         <br />
         <a

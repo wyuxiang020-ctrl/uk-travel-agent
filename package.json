@@ -9,7 +9,7 @@
     "preview": "npm run build && npm run start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test src/lib/demo-trip.test.ts src/lib/travel-tools.test.ts src/lib/travel-catalog.test.ts"
+    "test": "node --experimental-strip-types --test src/lib/demo-trip.test.ts src/lib/travel-tools.test.ts src/lib/travel-catalog.test.ts src/lib/agent/agent.test.ts src/lib/agent/complex-routes.test.ts src/lib/uk-route.test.ts src/lib/uk-daily.test.ts src/lib/travel-intake.test.ts src/lib/intake-assistant.test.ts"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

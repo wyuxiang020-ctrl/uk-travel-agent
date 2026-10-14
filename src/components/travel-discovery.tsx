@@ -104,8 +104,8 @@ export default function TravelDiscovery() {
     <div className="discovery-page">
       <a className="skip-link" href="#discovery-main">跳到旅行故事</a>
       <header className="discovery-header">
-        <Link className="discovery-brand" href="/" aria-label="英伦慢游首页">
-          <strong>英伦慢游</strong>
+        <Link className="discovery-brand" href="/" aria-label="欧洲慢游首页">
+          <strong>欧洲慢游</strong>
         </Link>
         <nav aria-label="主导航">
           <Link href="/plan">计划旅行</Link>
@@ -176,7 +176,7 @@ export default function TravelDiscovery() {
           </aside>
         </div>
       </main>
-      <footer className="discovery-footer"><Link href="/">英伦慢游</Link><Link href="/explore">地点资料 <ArrowUpRight size={12} aria-hidden="true" /></Link><details className="discovery-photo-credits"><summary>照片署名</summary><PhotoCredits /></details></footer>
+      <footer className="discovery-footer"><Link href="/">欧洲慢游</Link><Link href="/explore">地点资料 <ArrowUpRight size={12} aria-hidden="true" /></Link><details className="discovery-photo-credits"><summary>照片署名</summary><PhotoCredits /></details></footer>
     </div>
   );
 }

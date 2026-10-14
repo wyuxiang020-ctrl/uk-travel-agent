@@ -1,0 +1,11 @@
+import {SiteHeader,SiteFooter} from "@/components/site-chrome";
+import "@/components/slowtrail.css";
+const photographs=[
+ ["斯洛文尼亚 · 布莱德湖","Kyvuh","https://commons.wikimedia.org/wiki/File:Lake_Bled_from_Bled_Castle.jpg","CC0","https://creativecommons.org/publicdomain/zero/1.0/"],
+ ["爱丁堡 · Calton Hill","Nono vlf","https://commons.wikimedia.org/wiki/File:Edinburgh_(Calton_Hill).jpg","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0/"],
+ ["德文特湖与 Cat Bells","Miura-photo（Nathan Atkinson）","https://commons.wikimedia.org/wiki/File:Derwentwater_%26_Cat_Bells.jpg","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0/"],
+ ["伦敦 · Westminster Bridge","Edgar El","https://commons.wikimedia.org/wiki/File:London_-_Palace_of_Westminster_-_Big_Ben_%E2%80%93_Westminster-Bridge_-_panoramio.jpg","CC BY 3.0","https://creativecommons.org/licenses/by/3.0/"],
+ ["牛津 · Radcliffe Camera","Mike Peel","https://commons.wikimedia.org/wiki/File:Radcliffe_Camera,_Oxford.jpg","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0/"],
+ ["巴斯 · Roman Baths","Draceane","https://commons.wikimedia.org/wiki/File:Bath_roman_baths.jpg","公共领域","https://commons.wikimedia.org/wiki/File:Bath_roman_baths.jpg"]
+];
+export default function Credits(){return <div className="st-app"><SiteHeader/><main className="st-shell st-section st-info"><p className="st-eyebrow">IMAGE & MAP CREDITS</p><h1>感谢每一位记录远方的人。</h1><p>新版首页采用真实摄影。原始照片未改写内容，页面按屏幕比例裁切、优化尺寸并轻微降低饱和度；共享许可照片的展示衍生图沿用原许可。照片代表地点氛围，不代表旅行时的实时景色。</p><ul>{photographs.map(([name,author,url,license,licenseUrl])=><li key={name}><a href={url} target="_blank" rel="noreferrer">{name}</a> — {author} · <a href={licenseUrl} target="_blank" rel="noreferrer">{license}</a></li>)}</ul><h2>用户提供的参考影像</h2><p>罗马、佛罗伦萨和威尼斯图由用户提供，用于本地版式预览。底部庆祝场景由用户截图经 AI 清除英文与界面元素后呈现，不是本站用户照片或旅行评价。</p><h2>地图与交互</h2><p>上一版首屏线稿依据对应地点的 OpenStreetMap 道路与水域数据绘制，截取时间为 2026-10-13。新版首屏已移除地图覆盖，旧图保留作为过程资料，不用于导航。</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a> · ODbL。地图图稿按 CC BY-SA 4.0 提供。</p><p>标题粒子交互参考 <a href="https://github.com/Da0Mine/text-particleization" target="_blank" rel="noreferrer">Da0Mine / text-particleization</a> 的文字采样与弹性回归思路，本项目独立实现。桌面与手机均保留轻微动态；系统设置减少动态效果时显示正常文字，离开视口后暂停绘制。</p></main><SiteFooter/></div>}

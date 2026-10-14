@@ -2,7 +2,7 @@
 
 :root {
   --paper: #f7f6f2;
-  --ink: #20211f;
+  --ink: #243b33;
   --muted: #686963;
   --line: #dcdcd5;
   --orange: #6e756b;
@@ -10,6 +10,17 @@
   --font-display: "Songti SC", "STSong", "SimSun", Georgia, serif;
   --font-ui: var(--font-body);
 }
+.journey-loading { min-height:100svh; padding:40px 6%; background:#f7f6f0; color:#243b33; }
+.journey-loading-brand { font-family:Georgia,serif; font-size:26px; letter-spacing:3px; }
+.journey-loading-copy { padding-block:60px 35px; }
+.journey-loading-copy p { font-family:var(--font-display); font-size:30px; margin:0 0 15px; }
+.journey-loading-copy span { color:#6a716a; font-size:13px; }
+.journey-loading-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:40px; min-height:45svh; margin-bottom:30px; }
+.journey-loading-lines i { display:block; background:#e3e8dd; height:18px; margin-bottom:25px; width:85%; }
+.journey-loading-lines i:first-child { width:60%; height:36px; }
+.journey-loading-picture { background:#e3e8dd; }
+.journey-loading>a:last-child { font-size:12px; display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:6px; }
+@media (max-width:640px) { .journey-loading-layout { grid-template-columns:1fr; gap:15px; }.journey-loading-picture { min-height:30svh; }.journey-loading-copy p { font-size:25px; } }
 .home-research-link {
   display: inline-flex;
   align-items: center;
@@ -1607,3 +1618,4 @@ h2 {
     height: 210px;
   }
 }
+.journey-loading{background:#fff;color:#171717}.journey-loading-lines i,.journey-loading-picture{background:#f0f0f0}.journey-loading-copy p{font-family:Arial,"Microsoft YaHei",sans-serif}

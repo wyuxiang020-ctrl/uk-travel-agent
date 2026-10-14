@@ -218,7 +218,7 @@ export default function TravelResearch() {
         <Link href="/" className="brand">
           <Route size={27} />
           <span className="brand-name">
-            英伦慢游<span>SLOWTRAIL</span>
+            欧洲慢游<span>SLOWTRAIL</span>
           </span>
         </Link>
         <nav className="tr-header-nav" aria-label="旅行导航">

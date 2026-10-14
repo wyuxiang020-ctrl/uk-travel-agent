@@ -300,7 +300,7 @@ export default function TripPlanner({
       <header className="tp-header">
         <Link href="/" className="brand">
           <span className="brand-name">
-            英伦慢游<span>SLOWTRAIL</span>
+            欧洲慢游<span>SLOWTRAIL</span>
           </span>
         </Link>
         <nav aria-label="规划步骤" className="tp-steps">
@@ -311,7 +311,7 @@ export default function TripPlanner({
             确认
           </span>
           <span aria-current={step === "workspace" ? "step" : undefined}>
-            示例
+            {step === "workspace" ? "示例" : "规划"}
           </span>
         </nav>
         <div className="tp-header-actions">
@@ -325,21 +325,23 @@ export default function TripPlanner({
       </header>
       <div className="tp-mode-strip">
         <span>
-          示例规划 · 尚未接入 AI
+          {step === "workspace" ? "固定示例 · 非模型生成" : "确认需求后，可进入真实规划"}
         </span>
         <Link href="/explore" className="tp-research-link">
           资料与检查
         </Link>
+        <Link href="/plan/saved" className="tp-research-link">已保存行程</Link>
+        <Link href="/plan/route" className="tp-research-link">英国全域路线</Link>
       </div>
 
       {step === "form" && (
         <main className="tp-form-layout" id="tp-main">
           <aside className="tp-form-aside">
             <h1 ref={headingRef} tabIndex={-1}>
-              计划你的旅行。
+              细化每一天。
             </h1>
             <p>
-              从想去的地方，和愿意停留的时间开始。
+              当前逐日资料覆盖伦敦、牛津和巴斯；其他英国目的地请先在全域路线中安排。
             </p>
             <div className="tp-aside-photo">
               <Image
@@ -456,6 +458,7 @@ export default function TripPlanner({
                     type="date"
                     disabled={draft.datesFlexible}
                     value={draft.startDate}
+                    onInput={(event) => updateDraft("startDate", event.currentTarget.value)}
                     onChange={(event) =>
                       updateDraft("startDate", event.target.value)
                     }
@@ -609,7 +612,7 @@ export default function TripPlanner({
                   placeholder="比如：第 3 天下午有一场已约好的活动。"
                 />
                 <small>
-                  仅记录需求，不执行锁定。时间冲突可在“资料与检查”中另行检查。
+                  真实规划会补问并确认具体时间；固定示例不会应用这项安排。
                 </small>
               </div>
             </fieldset>
@@ -629,7 +632,7 @@ export default function TripPlanner({
             <h1 ref={headingRef} tabIndex={-1}>
               确认你的旅行。
             </h1>
-            <p>先核对你的条件，再打开交互示例。</p>
+            <p>先核对你的条件，再选择真实规划或浏览示例。</p>
           </div>
           <div className="tp-review-card">
             <div className="tp-review-top">
@@ -649,10 +652,10 @@ export default function TripPlanner({
               <div>
                 <strong>接下来看到的是什么？</strong>
                 <p>
-                  接下来是按城市和天数组合的固定示例，可能重复地点。偏好与特别安排仅保留展示，尚不参与编排。
+                  真实规划会先理解并补问，再请你确认条件，随后查询资料、编排行程和检查时间。需要在本机完成模型配置。
                 </p>
                 <p>
-                  未调用 AI 或自动检查；可另行打开“资料与检查”。
+                  也可以浏览固定示例，不调用模型；示例中的偏好与特别安排不参与编排。
                 </p>
               </div>
             </div>
@@ -661,9 +664,10 @@ export default function TripPlanner({
                 <ArrowLeft size={15} />
                 再改一改
               </button>
-              <button className="primary-button" onClick={openWorkspace}>
-                打开 {draft.days} 天交互示例 <ArrowRight size={17} />
+              <button className="tp-secondary" onClick={openWorkspace}>
+                查看 {draft.days} 天示例
               </button>
+              <Link className="primary-button" href="/plan/generate">进入真实规划 <ArrowRight size={17}/></Link>
             </div>
           </div>
         </main>
@@ -922,7 +926,7 @@ export default function TripPlanner({
       )}
 
       <footer className="tp-footer">
-        <span>英伦慢游</span>
+        <span>欧洲慢游</span>
         <button type="button" onClick={() => setDialog("credits")}>
           影像署名 <ArrowUpRight size={12} />
         </button>
@@ -1042,7 +1046,7 @@ export default function TripPlanner({
               </p>
             )}
             <p className="tp-detail-caution">
-              提交只会写入本次会话便笺。替换、锁定、撤销和保存尚未接入，当前示例不会改变。
+              提交只会写入本次会话便笺，当前固定示例不会改变。替换、锁定、撤销和保存请在真实规划工作区使用。
             </p>
             <button className="primary-button" type="submit">
               记入旅行便笺 <ArrowRight size={16} />

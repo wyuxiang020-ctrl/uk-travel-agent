@@ -1,0 +1,3 @@
+import Link from "next/link";
+export function SiteHeader({overlay=false}:{overlay?:boolean}){return <header className={`st-header ${overlay?"st-header-overlay":""}`}><Link className="st-brand" href="/" aria-label="Slowtrail首页">SLOWTRAIL<span>心 随 远 方</span></Link><nav aria-label="主导航"><Link href="/my-trips">我的旅行</Link><Link href="/about">关于</Link><Link href="/contact">联系</Link></nav></header>}
+export function SiteFooter(){return <footer className="st-footer"><Link className="st-brand" href="/">SLOWTRAIL<span>心 随 远 方</span></Link><p>让旅途，慢慢成为你的故事。</p><nav aria-label="页脚导航"><Link href="/journeys">发现旅行</Link><Link href="/plan">计划旅行</Link><Link href="/credits">影像与地图来源</Link></nav><small>欧洲旅行灵感 · 当前从英国开始</small></footer>}
